@@ -15,8 +15,7 @@
         android:padding="10dp"
         android:textSize="48sp"
         android:background="#EFEFEF"
-        android:gravity="end|bottom"
-        android:text="TextView" />
+        android:gravity="end|bottom" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -166,11 +165,27 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/buttonDot"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#9A9696"
+            android:text="."
+            app:cornerRadius="0dp" />
+
+        <Button
             android:id="@+id/button0"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
-            android:layout_weight="2"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
             android:backgroundTint="#9A9696"
             android:text="0"
             app:cornerRadius="0dp" />
@@ -190,6 +205,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:backgroundTint="#9A9696"
             android:text="+"

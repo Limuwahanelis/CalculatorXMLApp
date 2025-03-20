@@ -3,29 +3,43 @@ package com.example.calculatorxmlapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.View.OnClickListener
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 
-class MainActivity : AppCompatActivity(),OnClickListener{
+class MainActivity : AppCompatActivity(){
     private var numberButtons= mutableListOf<Button>()
     private var numbers= mutableListOf<Int>()
+    private var tvInput:TextView?=null;
+    private var clrBtn:Button?=null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        for(i in 1..9) {
+
+        tvInput= findViewById(R.id.result);
+        clrBtn = findViewById(R.id.buttonCLR);
+        clrBtn?.setOnClickListener { onClear() }
+        for(i in 0..9) {
 
             val btn: Button = (findViewById(resources.getIdentifier("button$i", "id", packageName)));
             numberButtons.add(btn);
-            btn.setOnClickListener { onClick(btn) }
+            btn.setOnClickListener { onDigit(btn) }
         }
 
     }
+    fun onClear()
+    {
+        tvInput?.text="";
+    }
 
-     override fun onClick(view:View) {
+     fun onText(view:View) {
 
-         val btn:Button = view as Button;
-         Toast.makeText(this,btn.text,Toast.LENGTH_LONG).show();
 
     }
+      fun onDigit(view:View) {
+
+          val btn: Button = view as Button;
+          //Toast.makeText(this, btn.text, Toast.LENGTH_LONG).show();
+          tvInput?.append(btn.text);
+      }
 }
