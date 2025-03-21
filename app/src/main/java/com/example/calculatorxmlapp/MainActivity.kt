@@ -108,14 +108,52 @@ class MainActivity : AppCompatActivity(){
                         splitValue[0]=prefix+splitValue[0];
                     }
 
-                    tvInput?.text = (splitValue[0].toDouble() - splitValue[1].toDouble()).toString();
+                    tvInput?.text = removeZeroAfterDot((splitValue[0].toDouble() - splitValue[1].toDouble()).toString());
                 }
+                else if (tvValue.contains("+"))
+                {
+                    var splitValue = mutableListOf("");
+                    splitValue  = tvValue.split("+").toMutableList();
+                    if(prefix.isNotEmpty())
+                    {
+                        splitValue[0]=prefix+splitValue[0];
+                    }
 
+                    tvInput?.text =removeZeroAfterDot ((splitValue[0].toDouble() + splitValue[1].toDouble()).toString());
+                }
+                else if (tvValue.contains("*"))
+                {
+                    var splitValue = mutableListOf("");
+                    splitValue  = tvValue.split("*").toMutableList();
+                    if(prefix.isNotEmpty())
+                    {
+                        splitValue[0]=prefix+splitValue[0];
+                    }
+
+                    tvInput?.text = removeZeroAfterDot((splitValue[0].toDouble() * splitValue[1].toDouble()).toString());
+                }
+                else if (tvValue.contains("/"))
+                {
+                    var splitValue = mutableListOf("");
+                    splitValue  = tvValue.split("/").toMutableList();
+                    if(prefix.isNotEmpty())
+                    {
+                        splitValue[0]=prefix+splitValue[0];
+                    }
+
+                    tvInput?.text =removeZeroAfterDot ((splitValue[0].toDouble() / splitValue[1].toDouble()).toString());
+                }
             }
             catch (e: ArithmeticException)
             {
                 e.printStackTrace();
             }
         }
+    }
+    private fun removeZeroAfterDot(result:String):String
+    {
+        var value = result;
+        if(result.contains(".0")) value=result.substring(0,result.length-2);
+        return value;
     }
 }
